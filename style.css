@@ -26,11 +26,15 @@ html, body {
 .buttons {
   display: flex;
   flex-wrap: wrap;
+  color: rgb(236, 236, 236);
   padding: 20px;
   gap: 10px;
 }
 
 .btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   height: 80px;
   width: 100px;
   background-color: gray;
