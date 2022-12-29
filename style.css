@@ -16,7 +16,11 @@ html, body {
 }
 
 .display {
-  height: 150px;
+  display: flex;
+  justify-content: end;
+  align-items: flex-end;
+  padding: 30px;
+  height: 100px;
   width: 430px;
   margin: 20px 20px 0px 20px;
   background-color: lightgray;
@@ -26,7 +30,6 @@ html, body {
 .buttons {
   display: flex;
   flex-wrap: wrap;
-  color: rgb(236, 236, 236);
   padding: 20px;
   gap: 10px;
 }
