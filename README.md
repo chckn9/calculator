@@ -1,6 +1,7 @@
 A simple calculator project:
 
 * It is still very buggy and can only perform very basic functions
+* This is mainly to practice my JavaScript so the code is rather messy
 
 Issues:
 - Doesn't support leading negative numbers
