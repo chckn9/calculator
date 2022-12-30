@@ -26,24 +26,25 @@ operators.forEach(op => {
     op.addEventListener('click', () => {
         const display = document.querySelector('.display');
         
-        // First number
-        if (typeof storedNum === 'undefined') {
-            operator = op.id;
-            storedNum = displayValue;
-            operatorToggled = true;
-        } else if (op.id === 'equal') {
-            storedNum = givenOperator(operator, storedNum, displayValue);
-            operatorToggled = true;
-            displayValue = storedNum;
-            display.textContent = displayValue;    
-        } else {
-            storedNum = givenOperator(operator, storedNum, displayValue);
-            operator = op.id;
-            operatorToggled = true;
-            displayValue = storedNum;
-            display.textContent = displayValue;  
-        }
-
+        //if (op.id !== "subtract" && storedNum !== 'undefined') {
+            // First number
+            if (typeof storedNum === 'undefined') {
+                operator = op.id;
+                storedNum = displayValue;
+                operatorToggled = true;
+            } else if (op.id === 'equal') {
+                storedNum = givenOperator(operator, storedNum, displayValue);
+                operatorToggled = true;
+                displayValue = storedNum;
+                display.textContent = displayValue;    
+            } else {
+                storedNum = givenOperator(operator, storedNum, displayValue);
+                operator = op.id;
+                operatorToggled = true;
+                displayValue = storedNum;
+                display.textContent = displayValue;  
+            }
+        //}
     });
 });
 
@@ -65,15 +66,19 @@ function populateDisplay(btn) {
 
     /*
     TO FIX:
-    - Do not allow decimal to be first "digit"
     - Show negative sign if display is empty
     - No double negatives or decimals
     */
-    if (!isNaN((+(btn.id))) || btn.id === "decimal") {
+
+    // Only displays numbers and decimals
+    if (!isNaN((+(btn.id))) || btn.id === "decimal" && displayValue !== "") {
         console.log(+(btn.id));
         if (btn.id === "decimal") {
             display.insertAdjacentHTML('beforeend', ".");
             displayValue += ".";
+        } else if (btn.id === "subtract") {
+                display.insertAdjacentHTML('beforeend', "-");
+                displayValue += "-";    
         } else {
             display.insertAdjacentHTML('beforeend', btn.id);
             displayValue += btn.id;
