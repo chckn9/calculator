@@ -6,6 +6,12 @@ html, body {
   height: 100%;
 }
 
+* {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 48px;
+  color: rgb(55, 55, 55);
+}
+
 .calculator {
   display: flex;
   flex-wrap: wrap;
@@ -47,6 +53,7 @@ html, body {
 #clear {
   width: 430px;
   background-color: lightcoral;
+  color: rgb(55, 55, 55);
 }
 
 .btn.operator {
