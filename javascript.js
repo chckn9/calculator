@@ -3,8 +3,8 @@ let displayValue = "";
 // Displays number when button is pressed
 function populateDisplay(btn) {
     const display = document.querySelector('.display');
-    display.insertAdjacentHTML('beforeend', btn.textContent);
-    displayValue += btn.textContent;
+    display.insertAdjacentHTML('beforeend', btn.id);
+    displayValue += btn.id;
 }
 
 const buttons = document.querySelectorAll('.btn');
