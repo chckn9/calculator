@@ -1,9 +1,16 @@
+let displayValue = "";
+
 // Displays number when button is pressed
+function populateDisplay(btn) {
+    const display = document.querySelector('.display');
+    display.insertAdjacentHTML('beforeend', btn.textContent);
+    displayValue += btn.textContent;
+}
+
 const buttons = document.querySelectorAll('.btn');
 buttons.forEach(btn => {
-    btn.addEventListener('click', (e) => {
-        const display = document.querySelector('.display');
-        display.insertAdjacentHTML('beforeend', btn.textContent);
+    btn.addEventListener('click', () => {
+        populateDisplay(btn);
     })
 })
 
