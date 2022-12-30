@@ -1,3 +1,12 @@
+// Displays number when button is pressed
+const buttons = document.querySelectorAll('.btn');
+buttons.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+        const display = document.querySelector('.display');
+        display.insertAdjacentHTML('beforeend', btn.textContent);
+    })
+})
+
 function add(a, b) { return a + b; }
 
 function subtract(a, b) { return a - b; }
