@@ -1,4 +1,4 @@
-let displayValue = "", storedNum, operator, operatorToggled;
+let displayValue = '', storedNum, operator, operatorToggled;
 
 function add(a, b) { return +a + +b; }
 
@@ -26,37 +26,35 @@ operators.forEach(op => {
     op.addEventListener('click', () => {
         const display = document.querySelector('.display');
         
-        //if (op.id !== "subtract" && storedNum !== 'undefined') {
-            // First number
-            if (typeof storedNum === 'undefined') {
-                operator = op.id;
-                storedNum = displayValue;
-                operatorToggled = true;
-            } else if (op.id === 'equal') {
-                storedNum = givenOperator(operator, storedNum, displayValue);
-                operatorToggled = true;
-                displayValue = storedNum;
-                display.textContent = displayValue;    
-            } else {
-                storedNum = givenOperator(operator, storedNum, displayValue);
-                operator = op.id;
-                operatorToggled = true;
-                displayValue = storedNum;
-                display.textContent = displayValue;  
-            }
-        //}
+        // First number
+        if (typeof storedNum === 'undefined') {
+            operator = op.id;
+            storedNum = displayValue;
+            operatorToggled = true;
+        } else if (op.id === 'equal') {
+            storedNum = givenOperator(operator, storedNum, displayValue);
+            operatorToggled = true;
+            displayValue = storedNum;
+            display.textContent = displayValue;    
+        } else {
+            storedNum = givenOperator(operator, storedNum, displayValue);
+            operator = op.id;
+            operatorToggled = true;
+            displayValue = storedNum;
+            display.textContent = displayValue;  
+        }
     });
 });
 
 // Takes in operator and 2 numbers, then calls respective function
 function givenOperator(operator, a, b) { 
-    if (operator === "divide")
+    if (operator === 'divide')
         return divide(a, b);
-    if (operator === "multiply")
+    if (operator === 'multiply')
         return multiply(a, b);
-    if (operator === "subtract")
+    if (operator === 'subtract')
         return subtract(a, b);
-    if (operator === "add")
+    if (operator === 'add')
         return add(a, b);
 }
 
@@ -71,14 +69,14 @@ function populateDisplay(btn) {
     */
 
     // Only displays numbers and decimals
-    if (!isNaN((+(btn.id))) || btn.id === "decimal" && displayValue !== "") {
+    if (!isNaN((+(btn.id))) || btn.id === 'decimal' && displayValue !== '') {
         console.log(+(btn.id));
-        if (btn.id === "decimal") {
-            display.insertAdjacentHTML('beforeend', ".");
-            displayValue += ".";
-        } else if (btn.id === "subtract") {
-                display.insertAdjacentHTML('beforeend', "-");
-                displayValue += "-";    
+        if (btn.id === 'decimal') {
+            display.insertAdjacentHTML('beforeend', '.');
+            displayValue += '.';
+        // } else if (btn.id === 'subtract') {
+        //         display.insertAdjacentHTML('beforeend', '-');
+        //         displayValue += '-';    
         } else {
             display.insertAdjacentHTML('beforeend', btn.id);
             displayValue += btn.id;
