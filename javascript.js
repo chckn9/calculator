@@ -21,7 +21,7 @@ function key(keyName) {
     if (keyName === '-') {
         return 'subtract';
     }
-    if (keyName === '=') {
+    if (keyName === '=' || keyName === 'Enter') {
         return 'equal';
     }
     if (keyName === '+') {
@@ -73,11 +73,31 @@ window.addEventListener('keypress', (e) => {
     }
     populateDisplay(btn);
 
+    const display = document.querySelector('.display');
+
+    if (btn.classList.contains("operator")) {
+        // First number
+        if (typeof storedNum === 'undefined') {
+            operator = btn.id;
+            storedNum = displayValue;
+            operatorToggled = true;
+        } else if (btn.id === 'equal') {
+            storedNum = givenOperator(operator, storedNum, displayValue);
+            operatorToggled = true;
+            displayValue = storedNum;
+            display.textContent = displayValue;    
+        } else {
+            storedNum = givenOperator(operator, storedNum, displayValue);
+            operator = btn.id;
+            operatorToggled = true;
+            displayValue = storedNum;
+            display.textContent = displayValue;  
+        }
+    }
+
     // Change font size when key down
     btn.classList.add("hovered");
     btn.classList.add("clicked");
-
-    console.log(keyName);
 })
 
 // Add eventListener (key releases)
@@ -90,8 +110,6 @@ window.addEventListener('keyup', (e) => {
     // Change font size when key up
     btn.classList.remove("hovered");
     btn.classList.remove("clicked");
-
-    console.log(keyName);
 })
 
 // When an operator is pressed, store display number and operator
