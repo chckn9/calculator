@@ -8,6 +8,28 @@ function multiply(a, b) { return +a * +b; }
 
 function divide(a, b) { return +a / +b; }
 
+function key(keyName) {
+    if (keyName === 'Backspace') {
+        return 'clear';
+    }
+    if (keyName === '/') {
+        return 'divide';
+    }
+    if (keyName === 'x' || keyName === '*') {
+        return 'multiply';
+    }
+    if (keyName === '-') {
+        return 'subtract';
+    }
+    if (keyName === '=') {
+        return 'equal';
+    }
+    if (keyName === '+') {
+        return 'add';
+    }
+    return keyName;
+}
+
 // Add eventListener to all buttons
 const buttons = document.querySelectorAll('.btn');
 buttons.forEach(btn => {
@@ -36,6 +58,41 @@ buttons.forEach(btn => {
         btn.classList.remove("clicked");
     });
 });
+
+// Add eventListener (key presses)
+window.addEventListener('keypress', (e) => {
+    let keyName = key(e.key);
+
+    let btn = document.querySelector(`[id="${keyName}"]`);
+    if (!btn) return;
+
+    // Add to display when pressed
+    if (operatorToggled === true) {
+        operatorToggled = false;
+        clearDisplay();
+    }
+    populateDisplay(btn);
+
+    // Change font size when key down
+    btn.classList.add("hovered");
+    btn.classList.add("clicked");
+
+    console.log(keyName);
+})
+
+// Add eventListener (key releases)
+window.addEventListener('keyup', (e) => {
+    let keyName = key(e.key);
+
+    let btn = document.querySelector(`[id="${keyName}"]`);
+    if (!btn) return;
+
+    // Change font size when key up
+    btn.classList.remove("hovered");
+    btn.classList.remove("clicked");
+
+    console.log(keyName);
+})
 
 // When an operator is pressed, store display number and operator
 const operators = document.querySelectorAll('.operator');
