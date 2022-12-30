@@ -51,6 +51,14 @@ html, body {
   border-radius: 10px;
 }
 
+.hovered {
+  font-size: 56px;
+}
+
+.clicked {
+  filter: brightness(85%);
+}
+
 #clear {
   width: 430px;
   background-color: lightcoral;

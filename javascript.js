@@ -11,12 +11,29 @@ function divide(a, b) { return +a / +b; }
 // Add eventListener to all buttons
 const buttons = document.querySelectorAll('.btn');
 buttons.forEach(btn => {
+    // Add to display when pressed
     btn.addEventListener('click', () => {
         if (operatorToggled === true) {
             operatorToggled = false;
             clearDisplay();
         }
         populateDisplay(btn);
+    });
+
+    // Change font size when hovered over
+    btn.addEventListener('mouseover', () => {
+        btn.classList.add("hovered");
+    });
+    btn.addEventListener('mouseout', () => {
+        btn.classList.remove("hovered");
+    });
+
+    // Change button color when clicked
+    btn.addEventListener('mousedown', () => {
+        btn.classList.add("clicked");
+    });
+    btn.addEventListener('mouseup', () => {
+        btn.classList.remove("clicked");
     });
 });
 
