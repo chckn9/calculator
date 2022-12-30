@@ -31,20 +31,17 @@ operators.forEach(op => {
             operator = op.id;
             storedNum = displayValue;
             operatorToggled = true;
-            console.log("number 1");
         } else if (op.id === 'equal') {
             storedNum = givenOperator(operator, storedNum, displayValue);
             operatorToggled = true;
             displayValue = storedNum;
-            display.textContent = displayValue;  
-            console.log("number 2");  
+            display.textContent = displayValue;    
         } else {
             storedNum = givenOperator(operator, storedNum, displayValue);
             operator = op.id;
             operatorToggled = true;
             displayValue = storedNum;
             display.textContent = displayValue;  
-            console.log("number 3");  
         }
 
     });
