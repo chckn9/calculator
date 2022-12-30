@@ -7,4 +7,5 @@ Issues:
 - No validation for number of decimals + negatives
 - Calculations will be wrong if equal sign is pressed
   and calculations are continued (must clear)
-- Others
+- Fix keydown for backspace/clear
+- Others...

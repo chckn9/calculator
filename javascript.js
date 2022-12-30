@@ -21,6 +21,9 @@ function key(keyName) {
     if (keyName === '-') {
         return 'subtract';
     }
+    if (keyName === '.') {
+        return 'decimal';
+    }
     if (keyName === '=' || keyName === 'Enter') {
         return 'equal';
     }
@@ -61,9 +64,12 @@ buttons.forEach(btn => {
 
 // Add eventListener (key presses)
 window.addEventListener('keypress', (e) => {
+    console.log(e.key);
     let keyName = key(e.key);
+    console.log(keyName);
 
     let btn = document.querySelector(`[id="${keyName}"]`);
+    console.log(btn);
     if (!btn) return;
 
     // Add to display when pressed
@@ -75,7 +81,7 @@ window.addEventListener('keypress', (e) => {
 
     const display = document.querySelector('.display');
 
-    if (btn.classList.contains("operator")) {
+    if (btn.classList.contains('operator')) {
         // First number
         if (typeof storedNum === 'undefined') {
             operator = btn.id;
@@ -93,6 +99,13 @@ window.addEventListener('keypress', (e) => {
             displayValue = storedNum;
             display.textContent = displayValue;  
         }
+    }
+
+    if (keyName === 'clear') {
+        clearDisplay();
+        storedNum = undefined;
+        operator = undefined;
+        operatorToggled = undefined;
     }
 
     // Change font size when key down
